@@ -576,10 +576,10 @@
             }
         },
         sendTime(spam) {
-            const repeat = spam ? 10 : 1;
-            for (let i = 0; i < repeat; i++) {
-                Telegram.WebApp.sendData(new Date().toString());
-            }
+            //const repeat = spam ? 10 : 1;
+            //for (let i = 0; i < repeat; i++) {
+                Telegram.WebApp.sendData("test message");
+            //}
         },
 
         // Alerts
