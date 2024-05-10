@@ -138,6 +138,33 @@
         input[type="text"]:-ms-input-placeholder {
             color: var(--tg-theme-hint-color, #ccc);
         }
+        
+        input[type="password"],
+        .input[contenteditable] {
+            display: block;
+            box-sizing: border-box;
+            font-size: 14px;
+            width: 100%;
+            padding: 12px 20px;
+            margin: 15px 0;
+            border: 1px solid var(--tg-theme-link-color, #000);
+            background-color: var(--tg-theme-bg-color, #ffffff);
+            border-radius: 4px;
+            color: var(--tg-theme-text-color, #222222);
+            text-align: start;
+        }
+
+        input[type="password"]::-webkit-input-placeholder {
+            color: var(--tg-theme-hint-color, #ccc);
+        }
+
+        input[type="password"]::-moz-placeholder {
+            color: var(--tg-theme-hint-color, #ccc);
+        }
+
+        input[type="password"]:-ms-input-placeholder {
+            color: var(--tg-theme-hint-color, #ccc);
+        }
 
         .input[data-placeholder] {
             position: relative;
@@ -338,7 +365,7 @@
 <section id="top_sect" class="second">
     <h1>Авторизация</h1>
     <input type="text" placeholder="Логин" id="login_field"/>
-    <input type="text" placeholder="Пароль" id="password_field"/>
+    <input type="password" placeholder="Пароль" id="password_field"/>
     <button id="main_btn" onclick="DemoApp.sendMessage('');">Войти</button>
     <button id="with_webview_btn" onclick="DemoApp.sendMessage('', true);" style="display:none">Send «Hello, World!» with inline webview button</button>
     
@@ -500,8 +527,12 @@
             //        alert('Unknown error');
             //    }
             //});
-            alert("должно сейчас работать");
-            Telegram.WebApp.sendData("Привет! это сообщение от сайта");
+            var obj = {
+                login: document.getElementById('login_field').value,
+                password: document.getElementById('password_field').value
+            }
+            var result = JSON.stringify(obj);
+            Telegram.WebApp.sendData(result);
         },
         changeMenuButton(close) {
             document.querySelectorAll('button').forEach((btn) => btn.disabled = true);
