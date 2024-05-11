@@ -501,8 +501,8 @@
             //    }
             //});
             var obj = {
-                login: document.getElementById('login_field').value,
-                password: document.getElementById('password_field').value
+                city: document.getElementById('city_field').value,
+                description: document.getElementById('description_field').value
             }
             var result = JSON.stringify(obj);
             Telegram.WebApp.sendData(result);
